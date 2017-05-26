@@ -46,11 +46,11 @@
 000000
 000000     MOVE InputValue TO CompleteValue.
 000000
-000000     COMPUTE DivisionParameter(1) = 400.
+000000     COMPUTE DivisionParameter(1) = 4.
 000000     COMPUTE ReturnCode(1) = 10.
 000000     COMPUTE DivisionParameter(2) = 100.
 000000     COMPUTE ReturnCode(2) = 0.
-000000     COMPUTE DivisionParameter(3) = 4.
+000000     COMPUTE DivisionParameter(3) = 400.
 000000     COMPUTE ReturnCode(3) = 10.
 000000
 000000     COMPUTE TotalCount =
@@ -61,7 +61,7 @@
 000000         UNTIL CurrentIndex > TotalCount
 000000
 000000         IF FUNCTION MOD(CompleteValue,
-000000             DivisionParameter(CurrentIndex)) = 0 THEN
+000000             DivisionParameter(CurrentIndex)) NOT = 0 THEN
 000000
 000000             COMPUTE RETURN-CODE = ReturnCode(CurrentIndex)
 000000             EXIT PERFORM
@@ -69,10 +69,9 @@
 000000     END-PERFORM.
 000000
 000000     IF RETURN-CODE = 10 THEN
-000000         DISPLAY "入力した西暦は閏年です。"
-000000     ELSE
-000000         COMPUTE RETURN-CODE = 0
 000000         DISPLAY "入力した西暦は平年です。"
+000000     ELSE
+000000         DISPLAY "入力した西暦は閏年です。"
 000000     END-IF.
 000000
 000000
